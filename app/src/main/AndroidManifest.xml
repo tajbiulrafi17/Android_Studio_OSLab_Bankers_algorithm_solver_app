@@ -10,6 +10,11 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.OSLab">
         <activity
+            android:name=".Bankers01"
+            android:exported="true"
+            android:parentActivityName=".MainActivity"
+            android:label="BANKER'S ALGORITHM"/>
+        <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
