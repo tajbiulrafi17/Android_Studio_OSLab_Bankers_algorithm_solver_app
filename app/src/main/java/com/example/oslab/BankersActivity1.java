@@ -15,7 +15,7 @@ public class BankersActivity1 extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_bankers01);
+        setContentView(R.layout.activity_bankers1);
     }
 
     public void openBankers2(View v){
@@ -23,8 +23,29 @@ public class BankersActivity1 extends AppCompatActivity {
         Intent intent = new Intent(this, BankersActivity2.class);
         pn = findViewById(R.id.editTxtP);
         rn = findViewById(R.id.editTxtR);
-        intent.putExtra("pn", pn.getText().toString());
-        intent.putExtra("rn", rn.getText().toString());
+
+//        intent.putExtra("pn", pn.getText().toString());
+//        intent.putExtra("rn", rn.getText().toString());
+
+        int p, r;
+        if(pn.getText().toString().length() == 0)
+        {
+            p=1;
+        }
+        else
+        {
+            p = Integer.parseInt(pn.getText().toString());
+        }
+        if(rn.getText().toString().length() == 0)
+        {
+            r=1;
+        }
+        else
+        {
+            r = Integer.parseInt(rn.getText().toString());
+        }
+        intent.putExtra("pn", p);
+        intent.putExtra("rn", r);
         startActivity(intent);
     }
 
