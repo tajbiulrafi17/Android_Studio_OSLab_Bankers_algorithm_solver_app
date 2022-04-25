@@ -85,6 +85,12 @@ public class BankersActivity2 extends AppCompatActivity {
             linearLayout.addView(myEditTextMax);
         }
 
+        show = findViewById(R.id.textView7);
+        safe = findViewById(R.id.textView8);
+
+        show.setVisibility(View.GONE);
+        safe.setVisibility(View.GONE);
+
 
 
         btn = findViewById(R.id.button2);
@@ -94,7 +100,7 @@ public class BankersActivity2 extends AppCompatActivity {
                 Toast.makeText(BankersActivity2.this, "Calculating...", Toast.LENGTH_SHORT).show();
 
 //                btn.setEnabled(false);
-//                btn.setVisibility(View.GONE);
+                btn.setVisibility(View.GONE);
 
                 String[] strAlloc = new String[p];
                 String[] strMax = new String[p];
@@ -142,7 +148,8 @@ public class BankersActivity2 extends AppCompatActivity {
                     }
                 }
 
-                show = findViewById(R.id.textView7);
+
+                show.setVisibility(View.VISIBLE);
                 show.append("--Need Matrix--\n    ");
                 for (int i = 0; i < r; i++) {
                     show.append("R" + i + "\t");
@@ -152,7 +159,7 @@ public class BankersActivity2 extends AppCompatActivity {
                     show.append("\nP" + i + "  ");
                     for (int j = 0; j < r; j++) {
                         show.append(Integer.toString(need[i][j]));
-                        show.append("   ");
+                        show.append("\t");
                     }
                 }
 
@@ -196,13 +203,13 @@ public class BankersActivity2 extends AppCompatActivity {
                     }
                 }
                 if (count < p) {
-                    safe = findViewById(R.id.textView8);
+                    safe.setVisibility(View.VISIBLE);
                     safe.setText("The System is UnSafe!");
                 }
                 else
                 {
-                    safe = findViewById(R.id.textView8);
-                    safe.setText("The given System is Safe");
+                    safe.setVisibility(View.VISIBLE);
+                    safe.setText("The given System is Safe.");
                     safe.append("\nFollowing is the SAFE Sequence:\n  ");
                     for (int i = 0;i < p; i++)
                     {
@@ -210,13 +217,7 @@ public class BankersActivity2 extends AppCompatActivity {
                         if (i != p-1)
                             safe.append(" -> ");
                     }
-//                    System.out.println("\nFollowing is the SAFE Sequence:");
-//                    for (int i = 0;i < p; i++)
-//                    {
-//                        System.out.print("P" + safeSequence[i]);
-//                        if (i != p-1)
-//                            System.out.print(" -> ");
-//                    }
+
                 }
 
             }

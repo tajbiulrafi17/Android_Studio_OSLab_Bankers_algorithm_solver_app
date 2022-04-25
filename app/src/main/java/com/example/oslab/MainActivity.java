@@ -25,8 +25,20 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void openBankers1(View v){
-        Toast.makeText(this, "Opening BankersActivity 01", Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, "Opening BankersAlgorithm", Toast.LENGTH_SHORT).show();
         Intent intent = new Intent(this, BankersActivity1.class);
+        startActivity(intent);
+    }
+
+    public void openCpuScheduling(View v){
+        Toast.makeText(this, "Opening Cpu Scheduling", Toast.LENGTH_SHORT).show();
+        Intent intent = new Intent(this, CpuSchActivity.class);
+        startActivity(intent);
+    }
+
+    public void openDiskScheduling(View v){
+        Toast.makeText(this, "Opening Disk Scheduling", Toast.LENGTH_SHORT).show();
+        Intent intent = new Intent(this, DiskSchActivity.class);
         startActivity(intent);
     }
 

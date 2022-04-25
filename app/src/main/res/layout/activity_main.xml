@@ -79,6 +79,7 @@
                 app:cardCornerRadius="12dp"
                 app:cardElevation="8dp"
                 android:clickable="true"
+                android:onClick="openCpuScheduling"
                 android:foreground="?android:attr/selectableItemBackground">
 
                 <LinearLayout
@@ -120,8 +121,8 @@
                 app:cardCornerRadius="12dp"
                 app:cardElevation="8dp"
                 android:clickable="true"
-                android:foreground="?android:attr/selectableItemBackground"
-                android:onClick="openBankers1">
+                android:onClick="openBankers1"
+                android:foreground="?android:attr/selectableItemBackground">
 
                 <LinearLayout
 
@@ -162,6 +163,7 @@
                 app:cardCornerRadius="12dp"
                 app:cardElevation="8dp"
                 android:clickable="true"
+                android:onClick="openDiskScheduling"
                 android:foreground="?android:attr/selectableItemBackground">
 
                 <LinearLayout

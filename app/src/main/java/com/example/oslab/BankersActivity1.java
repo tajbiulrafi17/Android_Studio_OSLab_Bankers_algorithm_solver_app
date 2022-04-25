@@ -19,7 +19,7 @@ public class BankersActivity1 extends AppCompatActivity {
     }
 
     public void openBankers2(View v){
-        Toast.makeText(this, "Opening BankersActivity 02", Toast.LENGTH_SHORT).show();
+        //Toast.makeText(this, "Opening BankersActivity 02", Toast.LENGTH_SHORT).show();
         Intent intent = new Intent(this, BankersActivity2.class);
         pn = findViewById(R.id.editTxtP);
         rn = findViewById(R.id.editTxtR);

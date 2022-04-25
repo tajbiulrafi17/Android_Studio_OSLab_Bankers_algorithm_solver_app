@@ -10,14 +10,24 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.OSLab">
         <activity
+            android:name=".DiskSchActivity"
+            android:exported="true"
+            android:label="Disk Scheduling"
+            android:parentActivityName=".MainActivity"/>
+        <activity
+            android:name=".CpuSchActivity"
+            android:exported="true"
+            android:label="Cpu Scheduling"
+            android:parentActivityName=".MainActivity"/>
+        <activity
             android:name=".BankersActivity2"
             android:exported="true"
-            android:label="BANKER&apos;S ALGORITHM 2"
+            android:label="BANKER&apos;S ALGORITHM"
             android:parentActivityName=".BankersActivity1" />
         <activity
             android:name=".BankersActivity1"
             android:exported="true"
-            android:label="BANKER&apos;S ALGORITHM 1"
+            android:label="BANKER&apos;S ALGORITHM"
             android:parentActivityName=".MainActivity" />
         <activity
             android:name=".MainActivity"
