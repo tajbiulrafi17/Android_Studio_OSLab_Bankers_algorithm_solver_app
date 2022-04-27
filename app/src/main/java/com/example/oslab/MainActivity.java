@@ -24,9 +24,9 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    public void openBankers1(View v){
-        Toast.makeText(this, "Opening BankersAlgorithm", Toast.LENGTH_SHORT).show();
-        Intent intent = new Intent(this, BankersActivity1.class);
+    public void openDeadlock(View v){
+        Toast.makeText(this, "Opening Deadlock", Toast.LENGTH_SHORT).show();
+        Intent intent = new Intent(this, DeadlockActivity.class);
         startActivity(intent);
     }
 

@@ -10,15 +10,30 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.OSLab">
         <activity
+            android:name=".DeadlockActivity2"
+            android:exported="true"
+            android:label="Deadlock Check"
+            android:parentActivityName=".DeadlockActivity1" />
+        <activity
+            android:name=".DeadlockActivity1"
+            android:exported="true"
+            android:label="Deadlock Check"
+            android:parentActivityName=".DeadlockActivity" />
+        <activity
+            android:name=".DeadlockActivity"
+            android:exported="true"
+            android:label="Deadlock"
+            android:parentActivityName=".MainActivity" />
+        <activity
             android:name=".DiskSchActivity"
             android:exported="true"
             android:label="Disk Scheduling"
-            android:parentActivityName=".MainActivity"/>
+            android:parentActivityName=".MainActivity" />
         <activity
             android:name=".CpuSchActivity"
             android:exported="true"
             android:label="Cpu Scheduling"
-            android:parentActivityName=".MainActivity"/>
+            android:parentActivityName=".MainActivity" />
         <activity
             android:name=".BankersActivity2"
             android:exported="true"
@@ -28,7 +43,7 @@
             android:name=".BankersActivity1"
             android:exported="true"
             android:label="BANKER&apos;S ALGORITHM"
-            android:parentActivityName=".MainActivity" />
+            android:parentActivityName=".DeadlockActivity" />
         <activity
             android:name=".MainActivity"
             android:exported="true">
