@@ -107,7 +107,7 @@ public class BankersActivity2 extends AppCompatActivity {
         edtProcessNo = findViewById(R.id.processNo);
         edtReqResource = findViewById(R.id.reqResource);
 
-        edtProcessNo.setHint("Enter Process number [1 Integer(0-"+(r-1)+")]");
+        edtProcessNo.setHint("Enter Process number [1 Integer(0-"+(p-1)+")]");
         edtReqResource.setHint("Enter "+r+" Requested Resources Value [Space Separated]");
         txtProcessNo.setVisibility(View.GONE);
         txtReqResource.setVisibility(View.GONE);
@@ -277,17 +277,124 @@ public class BankersActivity2 extends AppCompatActivity {
                         yes = false;
                     }
                 }
+                for(int i = 0; i<r; i++){
+                    if(req[i] > need[pn][i]){
+                        yes = false;
+                    }
+                }
 
                 if(yes){
                     for(int i = 0; i<r; i++){
                         avail[i] = avail[i] - req[i];
-                    }
-                    for(int i = 0; i<r; i++){
                         need[pn][i] = need[pn][i] - req[i];
-                    }
-                    for(int i = 0; i<r; i++){
                         alloc[pn][i] = alloc[pn][i] + req[i];
                     }
+
+                    //Safe state check
+                    int count = 0;
+
+                    boolean visited[] = new boolean[p];
+                    for (int i = 0; i < p; i++) {
+                        visited[i] = false;
+                    }
+
+
+                    int work[] = new int[r];
+                    for (int i = 0; i < r; i++) {
+                        work[i] = avail[i];
+                    }
+
+                    while (count < p) {
+                        boolean flag = false;
+                        for (int i = 0; i < p; i++) {
+                            if (visited[i] == false) {
+                                int j;
+                                for (j = 0; j < r; j++) {
+                                    if (need[i][j] > work[j])
+                                        break;
+                                }
+                                if (j == r) {
+                                    safeSequence[count++] = i;
+                                    visited[i] = true;
+                                    flag = true;
+
+                                    for (j = 0; j < r; j++) {
+                                        work[j] = work[j] + alloc[i][j];
+                                    }
+                                }
+                            }
+                        }
+                        if (flag == false) {
+                            break;
+                        }
+                    }
+                    if (count < p) {
+                        safe1.setVisibility(View.VISIBLE);
+                        safe1.setText("The System Cannot Grant the Request!(Deadlock)");
+                    }
+                    else
+                    {
+                        safe1.setVisibility(View.VISIBLE);
+                        safe1.setText("The System Can Grant the Request!");
+                        safe1.append("\nFollowing is the SAFE Sequence:\n  ");
+                        for (int i = 0;i < p; i++)
+                        {
+                            safe1.append("P" + safeSequence[i]);
+                            if (i != p-1)
+                                safe1.append(" -> ");
+                        }
+
+                    }
+
+
+                }
+                else{
+                    safe1.setVisibility(View.VISIBLE);
+                    safe1.setText("The System Cannot Grant the Request!");
+                }
+
+            }
+        });
+
+
+        btnARR.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                epn = findViewById(R.id.processNo);
+                err = findViewById(R.id.reqResource);
+
+                int pn = Integer.parseInt(epn.getText().toString());
+                String strReq = new String();
+
+                strReq = err.getText().toString();
+                String s[] = strReq.split(" ");
+                for(int i = 0; i<s.length; i++){
+                    req[i] = Integer.parseInt(s[i]);
+                }
+                boolean yes = true, check = true;
+                for(int i = 0; i<r; i++){
+                    if(req[i] > avail[i]){
+                        yes = false;
+                    }
+                }
+
+                if(yes) {
+                    for (int i = 0; i < r; i++) {
+                        avail[i] = avail[i] - req[i];
+                        need[pn][i] = need[pn][i] + req[i];
+                        if(alloc[pn][i]+need[pn][i] > max[pn][i]){
+                            check = false;
+                        }
+
+                    }
+                }
+
+                if(!check){
+                    safe1.setVisibility(View.VISIBLE);
+                    safe1.setText("Invalid Request!");
+                }
+                else if(yes && check){
 
                     //Safe state check
                     int count = 0;
